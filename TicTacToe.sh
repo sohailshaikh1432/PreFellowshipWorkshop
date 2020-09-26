@@ -2,22 +2,22 @@
 
 #declare dictionary array
 
-#fuction initOfBoard()
-#{
-#	declare -a positions
+function initOfBoard()
+{
+	declare -a positions
 
-#	positions[1]=" "
-#	positions[2]=" "
-#	positions[3]=" "
-#	positions[4]=" "
-#	positions[5]=" "
-#	positions[6]=" "
-#	positions[7]=" "
-#	positions[8]=" "
-#	positions[9]=" "
+	positions[1]=" "
+	positions[2]=" "
+	positions[3]=" "
+	positions[4]=" "
+	positions[5]=" "
+	positions[6]=" "
+	positions[7]=" "
+	positions[8]=" "
+	positions[9]=" "
 
-#	echo ${positions[@]}
-#}
+	echo ${positions[@]}
+}
 
 
 
@@ -58,8 +58,25 @@ function takingInput()
 	echo "User: $userSymbol"
 }
 
+
+#Printing board
+
+function board()
+{
+   printf "+---+---+---+\n"
+   printf "| ${positions[1]} | ${positions[2]} | ${positions[3]} |\n"
+   printf "+---+---+---+\n"
+   printf "| ${positions[4]} | ${positions[5]} | ${positions[6]} |\n"
+   printf "+---+---+---+\n"
+   printf "| ${positions[7]} | ${positions[8]} | ${positions[9]} |\n"
+   printf "+---+---+---+\n"
+}
+
+
+
 function ticTacToe()
 {
 	initOfBoard()
 	takingInput()
+	board()
 }
