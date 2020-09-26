@@ -23,7 +23,7 @@
 
 
 #Assign X & O symbols to computer and user.
-function toss()
+function takingInput()
 {
 	random=$(( RANDOM % 2 ))
 	if [ $random -eq 1 ]
@@ -56,4 +56,10 @@ function toss()
 	fi
 	echo "Computer: $computerSymbol"
 	echo "User: $userSymbol"
+}
+
+function ticTacToe()
+{
+	initOfBoard()
+	takingInput()
 }
