@@ -6,15 +6,15 @@ function initOfBoard()
 {
 	declare -a positions
 
-	positions[1]=" "
-	positions[2]=" "
-	positions[3]=" "
-	positions[4]=" "
-	positions[5]=" "
-	positions[6]=" "
-	positions[7]=" "
-	positions[8]=" "
-	positions[9]=" "
+	positions[1] = " "
+	positions[2] = " "
+	positions[3] = " "
+	positions[4] = " "
+	positions[5] = " "
+	positions[6] = " "
+	positions[7] = " "
+	positions[8] = " "
+	positions[9] = " "
 
 	echo ${positions[@]}
 }
@@ -23,7 +23,7 @@ function initOfBoard()
 
 
 #Assign X & O symbols to computer and user.
-function takingInput()
+function toss()
 {
 	random=$(( RANDOM % 2 ))
 	if [ $random -eq 1 ]
@@ -72,11 +72,36 @@ function board()
    printf "+---+---+---+\n"
 }
 
-
-
-function ticTacToe()
+#Function to reset board
+function resetBoard()
 {
-	initOfBoard()
-	takingInput()
-	board()
+	for (( i=1; i<=9; i++ ))
+	do
+		positions[$i]=$i
+	done
+	echo "Board reset successful."
+	board
 }
+
+#function for user turn
+function userPlay()
+{
+   read -p "Enter position you want to add $userSymbol: " choice1
+   while [ $(( ${positions["$choice1"]} )) -eq $(($computerSymbol)) -o $(( ${positions["$choice1"]} )) -eq $(($userSymbol)) ]
+   do
+      echo "Place already taken choose another one"
+      read -p "Enter position you want to add $userSymbol: " choice1
+   done
+   positions["$choice1"]=$userSymbol
+}
+
+
+#Function for play game & game over
+function main()
+{
+	initOfBoard
+	toss
+	board
+	userPlay
+}
+main
